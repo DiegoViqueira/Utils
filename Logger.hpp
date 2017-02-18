@@ -11,6 +11,7 @@ Logger
 
 #include <string>
 #include <iostream>
+#include <boost/filesystem/path.hpp>
 
 
 using namespace std;
@@ -38,9 +39,10 @@ namespace utils
 		Logger();
 
 		//Constuctor of Service Task implemetacion
-		//@Param: Name -  Name of the Filename Written for the Logger
+		//@Param: Path -  path of log files
+		//@Param: Name -  Name of File Written for the Logger without extension
 		//@Param: level_filter -  Logger Level filter
-		Logger(const std::string& Name , Logger::LEVEL level_filter);
+		Logger( boost::filesystem::path const&  Path, const std::string& Name , Logger::LEVEL level_filter);
 		
 		//log Function
 		//@Param: level - enum of Levels of log 

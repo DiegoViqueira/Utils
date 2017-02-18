@@ -39,11 +39,12 @@ namespace utils
 	{
 		
 	}
-	Logger::Logger(const std::string& Name , Logger::LEVEL lv)
+	Logger::Logger(boost::filesystem::path const&  Path, const std::string& Name , Logger::LEVEL lv)
 	{
 
 		
-		std::string file= Name;
+		std::string file= Path.generic_string();
+		file += Name;
 		file += "_%N.log";
 		
 		logging::core::get()->set_filter(logging::trivial::severity >= cast_enum(lv));
