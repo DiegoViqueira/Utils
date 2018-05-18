@@ -2,7 +2,6 @@
 // Name        : Asn1Utils.hpp
 // Author      : Diego Viqueira
 // Version     :
-// Copyright   : TecnoTree Corp.
 // Description : ASN1 Encoder / Decoder
 //============================================================================
 
@@ -123,7 +122,7 @@ namespace utils
 
 
 	public:
-		/// conversi髇 impl韈ita a string. operador()
+		/// conversi贸n impl铆cita a string. operador()
 		operator std::basic_string<CharT,Traits>() const {
 			return m_oOss.str();
 		}
@@ -137,14 +136,14 @@ namespace utils
 		}
 
 
-		/// Especializaci髇 para los Int operador << OVELOADING
+		/// Especializaci贸n para los Int operador << OVELOADING
 		const MakeTLV& operator<< (const int int_t) const {
 	
 				m_oOss<< TAG_INTEGER << (UInt8)sizeof(UInt8) << encode_int_asn1(int_t) ;
 			return *this;
 		}
 
-		/// Especializaci髇 para los const char* operador << OVELOADING
+		/// Especializaci贸n para los const char* operador << OVELOADING
 		const MakeTLV& operator<< (const char* str ) const {
 				int length=strlen(str);
 
@@ -152,25 +151,25 @@ namespace utils
 			return *this;
 		}
 
-		/// Especializaci髇 para los strings operador << OVELOADING
+		/// Especializaci贸n para los strings operador << OVELOADING
 		const MakeTLV& operator<< (const std::string str ) const {
 				m_oOss<< TAG_STRING << (UInt8)str.length() << str ;
 			return *this;
 		}
 
-		/// Especializaci髇 para los vector<int> - TODO operador << OVELOADING
+		/// Especializaci贸n para los vector<int> - TODO operador << OVELOADING
 		const MakeTLV& operator<< (const std::vector<int> int_vect ) const {
 				m_oOss<< TAG_SEQUENCE << (UInt8)int_vect.size() << int_vect.data() ;
 			return *this;
 		}
 
-		/// Especializaci髇 para los const bool operador << OVELOADING
+		/// Especializaci贸n para los const bool operador << OVELOADING
 		const MakeTLV& operator<< (const  bool bol ) const {
 				m_oOss<< TAG_BOOLEAN << (UInt8)sizeof(bol) << bol ;
 			return *this;
 		}
 		
-		/// Especializaci髇 para un TLV
+		/// Especializaci贸n para un TLV
 		const MakeTLV& operator<< (const  TLV& otlv ) const {
 				m_oOss<< otlv.tag << (UInt8)otlv.len << otlv.value ;
 			return *this;
