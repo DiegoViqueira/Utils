@@ -2,7 +2,6 @@
 // Name        : MakeString.hpp
 // Author      : Diego Viqueira
 // Version     :
-// Copyright   : TecnoTree Corp.
 // Description : Helper to build Strings
 //============================================================================
 
@@ -33,20 +32,20 @@ namespace str {
     public:
         enum HowToInsertUints { AS_NUMBER, AS_CHAR };
     private:
-        /// Miembro de clase: especifica cómo deben escribirse los UInt.
+        /// Miembro de clase: especifica cÃ³mo deben escribirse los UInt.
         static HowToInsertUints m_eHowToInsertUints;
 	public:
-		/// conversión implícita a string.
+		/// conversiÃ³n implÃ­cita a string.
 		operator std::basic_string<CharT,Traits>() const {
 			return m_oOss.str();
 		}
-		/// Insertor para un tipo T genérico.
+		/// Insertor para un tipo T genÃ©rico.
 		template<class T> const MakeStr& operator<< (const T& t) const {
 			m_oOss << t;
 			return *this;
 		}
 		
-		/// Especialización para los UInt.
+		/// EspecializaciÃ³n para los UInt.
 		const MakeStr& operator<< (const UInt8 ui8) const {
 			if (m_eHowToInsertUints == AS_NUMBER) {
                 m_oOss <<  static_cast<unsigned int>(ui8);
@@ -55,7 +54,7 @@ namespace str {
             }
 			return *this;
 		}
-		/// Manipulador para que imprima los uint_t como número.
+		/// Manipulador para que imprima los uint_t como nÃºmero.
 		const MakeStr& operator<< (const UIntAsNum) const {
 			m_eHowToInsertUints = AS_NUMBER;
 			return *this;
